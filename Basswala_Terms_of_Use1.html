@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1" />
+  <title>Basswala — Terms of Use</title>
+  <style>
+    :root{
+      --bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#06b6d4;--paper:#ffffff;--max-width:980px;
+      --gap:16px;--radius:12px;
+    }
+
+    /* Reset-ish */
+    *,*:before,*:after{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      line-height:1.6;background:linear-gradient(180deg,#071021 0%, #081426 100%);
+      color:var(--paper);padding:18px;margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Container */
+    .container{max-width:var(--max-width);margin:0 auto;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.7)}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    header img{width:56px;height:56px;border-radius:10px;background:#0b1220;display:inline-block;flex-shrink:0}
+    h1{margin:0;font-size:18px;line-height:1.1}
+    .meta{color:var(--muted);font-size:12px}
+
+    /* Top nav (scrollable on mobile) */
+    nav{display:flex;gap:10px;flex-wrap:nowrap;overflow:auto;padding:6px 0;margin:14px 0}
+    nav a{flex:0 0 auto;background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:13px}
+
+    /* Layout */
+    .two-col{display:grid;grid-template-columns:1fr 300px;gap:18px}
+    main{min-width:0}
+    aside{background:rgba(255,255,255,0.01);padding:12px;border-radius:8px}
+
+    /* Cards */
+    section.card,.card{background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;margin-bottom:12px}
+    h2{font-size:15px;margin:6px 0;color:var(--paper)}
+    p, li{color:#d8e1ea;font-size:14px}
+    ul,ol{margin-left:18px}
+
+    /* Download link style */
+    .download{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent);text-decoration:none}
+
+    footer{color:var(--muted);font-size:13px;margin-top:18px;text-align:center}
+
+    /* Accessibility / Tap targets */
+    a,button{touch-action:manipulation}
+
+    /* Make images responsive */
+    img{max-width:100%;height:auto;display:block}
+
+    /* Small screens adjustments */
+    @media (max-width:880px){
+      body{padding:12px}
+      header{align-items:flex-start}
+      h1{font-size:16px}
+      .two-col{grid-template-columns:1fr}
+      nav{margin:10px -4px;padding:8px;gap:8px}
+      nav a{padding:10px 12px;border-radius:8px;font-size:14px}
+      .container{padding:16px}
+      .meta{font-size:12px}
+      section.card,.card{padding:12px}
+    }
+
+    /* Very small phones */
+    @media (max-width:420px){
+      header img{width:48px;height:48px}
+      h1{font-size:15px}
+      p,li{font-size:13px}
+      nav a{font-size:13px;padding:10px}
+      .container{padding:12px}
+    }
+
+    /* Landscape / larger devices */
+    @media (min-width:1200px){
+      :root{--max-width:1100px}
+    }
+
+    /* Make pre scrollable on small width */
+    pre{white-space:pre-wrap;word-break:break-word;background:transparent;border-left:3px solid rgba(255,255,255,0.03);padding:8px;border-radius:6px;overflow:auto}
+
+    /* Focus outlines for keyboard users */
+    a:focus{outline:3px solid rgba(6,182,212,0.18);outline-offset:2px}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img alt="Basswala logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%23061b2a'/%3E%3Ctext x='50' y='58' font-family='Arial' font-size='40' fill='%23fff' text-anchor='middle' font-weight='700'%3EBW%3C/text%3E%3C/svg%3E"/>
+      <div>
+        <h1>BASSWALA — Terms of Use</h1>
+        <div class="meta">Effective date: 8 September 2025 • Last updated: 8 September 2025</div>
+      </div>
+    </header>
+
+    <!-- Mobile-friendly nav: horizontally scrollable on small screens -->
+    <nav aria-label="Terms sections">
+      <a href="#intro">Introduction</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#accounts">Account Registration</a>
+      <a href="#fees">Fees &amp; Payments</a>
+      <a href="#liability">Liability</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="two-col">
+      <main>
+        <section id="intro" class="card">
+          <h2>1. Introduction</h2>
+          <p>These Terms of Use ("Terms") govern your access to and use of Basswala's platform, mobile applications, and related services (the "Service"). By accessing or using the Service you agree to these Terms. If you do not agree, do not use the Service.</p>
+        </section>
+
+        <section id="eligibility" class="card">
+          <h2>2. Eligibility</h2>
+          <p>To use Basswala, you must be at least 18 years old and capable of forming legally binding contracts. By using the Service you represent and warrant that you meet these requirements.</p>
+        </section>
+
+        <section id="accounts" class="card">
+          <h2>3. Account Registration & User Obligations</h2>
+          <p>To access certain features you must create an account and provide accurate information (name, email, phone, payment details). You are responsible for:</p>
+          <ul>
+            <li>Keeping login credentials secure and confidential.</li>
+            <li>All activity on your account.</li>
+            <li>Updating information to keep it accurate.</li>
+          </ul>
+          <p>Basswala may suspend or terminate accounts for violations, fraudulent activity, or abuse.</p>
+        </section>
+
+        <section id="services" class="card">
+          <h2>4. Services</h2>
+          <p>Basswala is a third‑party platform that connects Clients (those seeking DJs) with DJ Operators (service providers). Basswala facilitates search, bookings, payment processing, and dispute assistance. Basswala does not directly provide DJ services — DJ Operators deliver services to Clients under their own terms.</p>
+        </section>
+
+        <section id="fees" class="card">
+          <h2>5. Fees, Commissions & Payments</h2>
+          <p>Basswala charges commissions on bookings as follows:</p>
+          <ul>
+            <li>5% commission for transactions above ₹5,000 INR</li>
+            <li>10% commission for transactions equal to or below ₹5,000 INR</li>
+          </ul>
+          <p>Payments are processed through third‑party gateways (e.g., Razorpay). By making payments you agree to the terms and policies of these payment providers. Basswala may hold or deduct fees as necessary to process refunds, chargebacks, taxes, or penalties.</p>
+        </section>
+
+        <section id="operator-resp" class="card">
+          <h2>6. DJ Operator Responsibilities</h2>
+          <p>DJ Operators must:</p>
+          <ol>
+            <li>Provide accurate service descriptions, rates, availability, and KYC/bank details for payouts.</li>
+            <li>Honor confirmed bookings, arrive on time, and maintain professional conduct.</li>
+            <li>Comply with local laws, licenses, and safety requirements.</li>
+            <li>Resolve service quality issues promptly; Basswala may mediate disputes but is not a party to the operator-client contract.</li>
+          </ol>
+        </section>
+
+        <section id="client-resp" class="card">
+          <h2>7. Client Responsibilities</h2>
+          <p>Clients must provide accurate event details, make timely payments, and treat Operators professionally. Cancellation and refund rules apply per Basswala’s policies which may change from time to time.</p>
+        </section>
+
+        <section id="content" class="card">
+          <h2>8. Content & Intellectual Property</h2>
+          <p>All Basswala content (designs, logos, documentation) is owned by Basswala or its licensors. Users grant Basswala a license to use content uploaded to the platform for service provision and promotion (e.g., operator portfolios, reviews).</p>
+        </section>
+
+        <section id="prohibitions" class="card">
+          <h2>9. Prohibited Conduct</h2>
+          <p>Users shall not:</p>
+          <ul>
+            <li>Misrepresent identity or engage in fraudulent conduct.</li>
+            <li>Use the Service to harass, defame, or infringe on others' rights.</li>
+            <li>Use unauthorized automation to access or scrape the Service.</li>
+          </ul>
+        </section>
+
+        <section id="liability" class="card">
+          <h2>10. Limitation of Liability & Disclaimers</h2>
+          <p>Basswala acts only as a marketplace facilitator. To the fullest extent permitted by law, Basswala disclaims warranties and is not liable for indirect, incidental, special or consequential damages arising from use of the Service or interactions between users. Liability caps may apply as permitted by law.</p>
+        </section>
+
+        <section id="termination" class="card">
+          <h2>11. Termination & Suspension</h2>
+          <p>Basswala may suspend or terminate accounts for policy violations, fraudulent activity, or legal reasons. Users may also close accounts by following in‑app procedures; certain records may be retained for legal or business reasons.</p>
+        </section>
+
+        <section id="disputes" class="card">
+          <h2>12. Dispute Resolution</h2>
+          <p>Users should first contact Basswala support for dispute resolution. These Terms are governed by the laws of India and disputes will be subject to competent courts of India unless otherwise agreed.</p>
+        </section>
+
+        <section id="privacy" class="card">
+          <h2>13. Privacy</h2>
+          <p>Use of the Service is governed by Basswala's <a href="Basswala_Privacy_Policy.html">Privacy Policy</a>, which explains how personal data is collected and processed.</p>
+        </section>
+
+        <section id="changes" class="card">
+          <h2>14. Changes to Terms</h2>
+          <p>Basswala may update these Terms. Material changes will be communicated and the "Last updated" date will be revised. Continued use after changes indicates acceptance.</p>
+        </section>
+
+        <section id="contact" class="card">
+          <h2>15. Contact</h2>
+          <p>For questions about these Terms, contact:<br>
+          Basswala (Private Limited)<br>
+          Email: <a href="mailto:bassmedia7@gmail.com">bassmedia7@gmail.com</a><br>
+          Postal: [Company registered address]</p>
+        </section>
+
+        <section class="card">
+          <h2>16. Legal Notice</h2>
+          <p>This Terms template is provided for convenience and does not constitute legal advice. Consult counsel to tailor for Basswala's specific legal needs.</p>
+        </section>
+
+      </main>
+
+      <aside>
+
+        <div class="card">
+          <h3>Summary</h3>
+          <p class="meta">Short summary for in-app display:</p>
+          <pre>These Terms explain user responsibilities, fees, and the marketplace role of Basswala. Basswala is not the service provider — DJ Operators are.</pre>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div>© 2025 BASSWALA. All rights reserved.</div>
+    </footer>
+  </div>
+</body>
+</html>
