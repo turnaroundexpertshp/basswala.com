@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASSWALA - DJ Rentals Made Easy</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 20;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255, 0, 150, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 50px rgba(255, 0, 150, 0.5); }
+            to { box-shadow: 0 0 80px rgba(255, 0, 150, 0.8); }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff0080, #00ffff, #ff8000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #f4c2c2, #f4c2c2);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(244, 194, 194, 0.3);
+            animation: buttonPulse 2s infinite;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(244, 194, 194, 0.5);
+        }
+
+        .features {
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ff0080;
+        }
+
+        .mascot-section {
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .mascot-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .mascot-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            box-shadow: 0 0 100px rgba(255, 0, 150, 0.6);
+            animation: mascotFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes mascotFloat {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            25% { transform: translateY(-20px) rotateY(5deg); }
+            50% { transform: translateY(0px) rotateY(0deg); }
+            75% { transform: translateY(-10px) rotateY(-5deg); }
+        }
+
+       .founder-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: slideGlow 3s ease infinite;
+        }
+
+
+        .contact-info {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 0, 128, 0.2);
+            transform: scale(1.05);
+        }
+
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .float-item {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-item:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .float-item:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .float-item:nth-child(3) { left: 70%; animation-delay: 2s; }
+        .float-item:nth-child(4) { left: 80%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotateZ(0deg); }
+            50% { transform: translateY(-100px) rotateZ(180deg); }
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #ff0080, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .download-buttons { flex-direction: column; align-items: center; }
+            .features-grid { grid-template-columns: 1fr; }
+            .mascot-img { width: 250px; height: 250px; }
+        }
+         /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin: 10px; 
+        }
+
+        .footer-section p {
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+            margin: 10px; 
+        }
+
+        .footer-links {
+            list-style: none;
+            margin: 10px;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-elements">
+                <div class="float-item">🎵</div>
+                <div class="float-item">🎧</div>
+                <div class="float-item">🔊</div>
+                <div class="float-item">🎶</div>
+            </div>
+            
+            <div class="hero-content">
+                  <div class="logo">
+      <img src="logo(no-bg) (150x150).png" alt="Basswala logo" loading="lazy" />
+    </div>
+                
+                <h1>BASSWALA</h1>
+                <p>🎵 Premium DJ Rentals at Your Fingertips 🎵<br>
+                Connect with top DJs • Affordable Quality • Seamless Experience</p>
+                
+                <div class="download-buttons">
+                    <a href="https://play.google.com/store/apps?hl=en_IN" class="download-btn" id="playstore-btn">
+                        <span>📱</span>
+                        Download on Play Store
+                    </a>
+                    <a href="https://www.apple.com/in/app-store/" class="download-btn" id="appstore-btn">
+                        <span>🍎</span>
+                        Download on App Store
+                    </a>
+                </div>
+                
+                <div style="margin-top: 30px; font-size: 1.1rem; opacity: 0.9;">
+                    Like Rapido for rides, Zomato for food - We're your DJ connection!
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="section-title">Why Choose BASSWALA?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎧</div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Quality Guaranteed</h3>
+                    <p>Premium DJ equipment and verified professionals ensure your event sounds perfect every time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Affordable Pricing</h3>
+                    <p>Get top-tier DJ services without breaking the bank. Quality music at prices that make sense.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Instant Booking</h3>
+                    <p>Book your DJ in minutes, not hours. Our smart matching connects you with available DJs instantly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">For DJs & Users</h3>
+                    <p>Whether you need a DJ or you ARE a DJ looking for gigs - we've got you covered!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mascot Section -->
+            <h2 class="section-title">Meet Our Founder!</h2>
+        </section>
+
+        <!-- Founder Section -->
+        <section class="about-founder" id="about">
+        <div class="founder-card">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Ritik Yadav</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                Founder & CEO of BASSWALA, passionate about connecting music lovers with premium DJ services. 
+                Building the future of event entertainment through technology and quality service.
+            </p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                          <span><a href="tel:+91 99284 25013" style="color: inherit; text-decoration: none;">+91 99284 25013</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span><a href="mailto:bw@basswala.com" style="color: inherit; text-decoration: none;"></a>bw@basswala.com</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section style="padding: 100px 20px; text-align: center; background: linear-gradient(45deg, #1a1a2e, #16213e);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 30px;">Ready to Drop the Beat? 🎵</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Join thousands of users and DJs who trust BASSWALA for their events. 
+                Download now and experience the future of DJ rentals!
+            </p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    <span>🚀</span>
+                    Get Started Now
+                </a>
+            </div>
+        </section>
+    </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Logo & About -->
+            <div class="footer-section">
+                <div class="logo mb-4">
+                    <!-- Using an image for the logo for better control and styling -->
+                    <img src="logo(no-bg) (150x150).png" alt="BASSWALA Logo" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 10px; vertical-align: middle;">
+                    
+                </div>
+                <div class="social-links" style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="https://www.facebook.com/share/1GAWkiMNRC/" target="_blank"rel="noopener noreferrer" class="social-link">
+                        <img src="https://img.icons8.com/ios-filled/30/ffffff/facebook-new.png" alt="Facebook" style="width: 30px; height: 30px;"/>
+                    </a>
+                    <a href="https://www.instagram.com/bass_wala.official?utm_source=qr&igsh=MTc3MHgxeDhkcGh4ZA==" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="https://img.icons8.com/ios-filled/30/ffffff/instagram-new--v1.png" alt="Instagram" style="width: 30px; height: 30px;"/>
+                    </a>
+                    <a href="https://x.com/bass_wala_?t=sm3XAsj41V2CMnl0xXFiUA&s=08" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <img src="https://img.icons8.com/ios-filled/30/ffffff/twitterx--v1.png" alt="Twitter" style="width: 30px; height: 30px;"/>
+                    </a>
+                    <a href="https://www.youtube.com/@BASSWALAOFFICIAL" target="_blank" rel="noopener noreferrer"  class="social-link">
+                        <img src="https://img.icons8.com/ios-filled/30/ffffff/youtube-play--v1.png" alt="YouTube" style="width: 30px; height: 30px;"/>
+                    </a>
+                </div>
+              
+            </div>
+
+            <!-- Services -->
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">DJ Services</a></li>
+                    <li><a href="#">Speaker Rental</a></li>
+                    <li><a href="#">Event Management</a></li>
+                    <li><a href="#">Equipment Rental</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                    <img src="https://img.icons8.com/ios-filled/20/ffffff/phone.png" alt="Phone" style="width: 20px; height: 20px;"/>
+                    <span><a href="tel:+91 99284 25013" style="color: inherit; text-decoration: none;">+91 99284 25013</a></span>
+                
+                    <br><img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png" alt="Mail" style="width: 20px; height: 20px;"/>
+                    <span><a href="mailto:bw@basswala.com" style="color: inherit; text-decoration: none;">bw@basswala.com</a></span>
+                
+                   <br> <img src="https://img.icons8.com/ios-filled/20/ffffff/marker--v1.png" alt="Location" style="width: 20px; height: 20px;"/>
+                    <span>Jaipur, India</span>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Menu -->
+        <div class="footer-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px; margin-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem;">
+                © 2025 BASSWALA. All rights reserved.
+            </div>
+            <div class="footer-links-bottom" style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <a href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease;">Home</a>
+                <a href="Basswala_Privacy_Policy.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease;">Privacy Policy</a>
+                <a href="Basswala_Terms_of_Use1.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease;">Terms of Service</a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Three.js 3D Background Animation
+        let scene, camera, renderer, particles;
+        
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('three-canvas'), alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Create floating 3D particles
+            const geometry = new THREE.SphereGeometry(0.5, 8, 8);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0xff0080, 
+                transparent: true, 
+                opacity: 0.6 
+            });
+            
+            particles = new THREE.Group();
+            
+            for (let i = 0; i < 100; i++) {
+                const particle = new THREE.Mesh(geometry, material.clone());
+                particle.position.x = (Math.random() - 0.5) * 100;
+                particle.position.y = (Math.random() - 0.5) * 100;
+                particle.position.z = (Math.random() - 0.5) * 100;
+                
+                // Random colors
+                const colors = [0xff0080, 0x00ffff, 0xff8000, 0x8000ff];
+                particle.material.color.setHex(colors[Math.floor(Math.random() * colors.length)]);
+                
+                particles.add(particle);
+            }
+            
+            scene.add(particles);
+            camera.position.z = 50;
+            
+            animate();
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Rotate particles
+            particles.rotation.x += 0.001;
+            particles.rotation.y += 0.002;
+            
+            // Individual particle animation
+            particles.children.forEach((particle, index) => {
+                particle.rotation.x += 0.01;
+                particle.rotation.y += 0.01;
+                particle.position.y += Math.sin(Date.now() * 0.001 + index) * 0.01;
+            });
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Mouse interaction for 3D effect
+        document.addEventListener('mousemove', (e) => {
+            if (camera) {
+                const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                
+                camera.position.x = mouseX * 5;
+                camera.position.y = mouseY * 5;
+                camera.lookAt(0, 0, 0);
+            }
+        });
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            if (camera && renderer) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+        
+        // Initialize 3D scene
+        initThree();
+        
+        // Enhanced button interactions
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-5px) scale(1.1) rotateX(10deg)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0px) scale(1) rotateX(0deg)';
+            });
+            
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Add click animation
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1.1)';
+                    // Here you would redirect to actual app stores
+                    alert('Redirecting to app store... 🚀');
+                }, 100);
+            });
+        });
+        
+        // Feature cards 3D effect
+        document.querySelectorAll('.feature-card, .founder-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for scroll animations
+        document.querySelectorAll('.feature-card, .founder-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Add dynamic audio visualization effect
+        function createAudioWaves() {
+            const waves = document.createElement('div');
+            waves.style.cssText = `
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100px;
+                background: linear-gradient(180deg, transparent, rgba(255, 0, 128, 0.1));
+                z-index: 5;
+                pointer-events: none;
+            `;
+            
+            for (let i = 0; i < 20; i++) {
+                const wave = document.createElement('div');
+                wave.style.cssText = `
+                    position: absolute;
+                    bottom: 0;
+                    left: ${i * 5}%;
+                    width: 4px;
+                    height: ${Math.random() * 60 + 20}px;
+                    background: linear-gradient(0deg, #ff0080, #00ffff);
+                    animation: audioWave ${Math.random() * 2 + 1}s ease-in-out infinite alternate;
+                `;
+                waves.appendChild(wave);
+            }
+            
+            document.body.appendChild(waves);
+        }
+        
+        // Add audio wave animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes audioWave {
+                0% { height: 20px; opacity: 0.3; }
+                100% { height: 80px; opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        createAudioWaves();
+        
+        // Add pulsing background effect
+        setInterval(() => {
+            document.body.style.background = `
+                linear-gradient(135deg, 
+                    hsl(${Math.random() * 60 + 240}, 70%, ${Math.random() * 20 + 10}%), 
+                    hsl(${Math.random() * 60 + 200}, 80%, ${Math.random() * 25 + 15}%), 
+                    hsl(${Math.random() * 60 + 180}, 90%, ${Math.random() * 30 + 20}%)
+                )
+            `;
+        }, 5000);
+    </script>
+</body>
+</html>
