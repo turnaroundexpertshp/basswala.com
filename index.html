@@ -628,27 +628,7 @@
         // Initialize 3D scene
         initThree();
         
-        // Enhanced button interactions
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transform = 'translateY(-5px) scale(1.1) rotateX(10deg)';
-            });
-            
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translateY(0px) scale(1) rotateX(0deg)';
-            });
-            
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Add click animation
-                btn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    btn.style.transform = 'scale(1.1)';
-                    // Here you would redirect to actual app stores
-                    alert('Redirecting to app store... 🚀');
-                }, 100);
-            });
-        });
+        
         
         // Feature cards 3D effect
         document.querySelectorAll('.feature-card, .founder-card').forEach(card => {
